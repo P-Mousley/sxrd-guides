@@ -3,6 +3,7 @@ Guide to surface x-ray diffraction analysis
 
 Here are some walkthroughs to aid in the analysis of surface x-ray diffraction measurements
 
+`Guide for analysing omega scan data`_ 
 
 
 Links to extra pdf resources
@@ -19,3 +20,6 @@ Links to extra pdf resources
    :maxdepth: 2
 
    omegascans
+   fractionalhkl
+
+.. _Guide for analysing omega scan data: ./omegascans.html

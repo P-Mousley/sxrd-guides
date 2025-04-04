@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Guide to surface x-ray diffraction analysis &#8212; sxrd guides  documentation</title>
+    <title>HKL fractional positions &#8212; sxrd guides  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
@@ -24,7 +24,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Guide for processing inplane omega scans" href="omegascans.html" />
+    <link rel="prev" title="Guide for processing inplane omega scans" href="omegascans.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -42,21 +42,29 @@
 
           <div class="body" role="main">
             
-  <section id="guide-to-surface-x-ray-diffraction-analysis">
-<h1>Guide to surface x-ray diffraction analysis<a class="headerlink" href="#guide-to-surface-x-ray-diffraction-analysis" title="Link to this heading">¶</a></h1>
-<p>Here are some walkthroughs to aid in the analysis of surface x-ray diffraction measurements</p>
-<p><a class="reference external" href="./omegascans.html">Guide for analysing omega scan data</a></p>
-<section id="links-to-extra-pdf-resources">
-<h2>Links to extra pdf resources<a class="headerlink" href="#links-to-extra-pdf-resources" title="Link to this heading">¶</a></h2>
+  <section id="hkl-fractional-positions">
+<h1>HKL fractional positions<a class="headerlink" href="#hkl-fractional-positions" title="Link to this heading">¶</a></h1>
+<p>To calculate the expected HKL positions of a crystalline material:</p>
+<ol class="arabic">
+<li><p>Obtain the lattice parameters of the expected material (a,b,c) and calculate the values for Qx,Qy,Qz using the following equations:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="_static/rodmanual_2018.pdf">ROD manual 2018</a></p></li>
-<li><p><a class="reference external" href="_static/beamtime_to_SF_EVlieg.pdf">from beamtime to structure factors- E.Vlieg 2019</a></p></li>
+<li><p><span class="math notranslate nohighlight">\(𝑄 = \frac{2\pi}{d}\)</span>.  here d is the crystal spacing which can be either a,b or c depending on which axis you are calculating.</p></li>
+<li><p>Once you have the Q value for your expected material <span class="math notranslate nohighlight">\(Q_{mat}\)</span> you can calculate the expected H,K or L position by doing <span class="math notranslate nohighlight">\(Q_{pos}= \frac{Q_{mat}}{Q_{sub}}\)</span>  where <span class="math notranslate nohighlight">\(Q_{sub}\)</span> is the corresponding Q value for the substrate material.</p></li>
+<li><dl class="simple">
+<dt>e.g. if your substrate has a c-lattice parameter of 1.8 Å and your expected material in your film has a c-lattice parameter of 2.0 Å then your expected positions will be as follows:</dt><dd><ul>
+<li><p><span class="math notranslate nohighlight">\(Q_{sub}=\frac{2\pi}{1.8}=3.49\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q_{mat}=\frac{2\pi}{2.0}=3.14\)</span></p></li>
+<li><p>Expected Q position in data <span class="math notranslate nohighlight">\(Q_{pos} = \frac{3.14}{3.49} = 0.9\)</span> , therefore you would expect to see intensity at positions of multiples of 0.9 e.g. L=0.9, L= 1.8, L=2.7 etc</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div></blockquote>
-<div class="toctree-wrapper compound">
-</div>
-</section>
+</li>
+</ol>
+<p>You can use this technique to estimate the fractional positions of signals in the H,K and L directions. A program like <a class="reference external" href="https://jp-minerals.org/vesta/">VESTA</a> can show the powder diffraction plot for a material to let you know the relative strengths of the signals, so you will probably expect to only see some of the strongest signals. Once you have obtained HKL positions for all expected materials, you can compare with your dataset to see where intensity was actually measured. This can be used to assign intensities measures with the expected materials, and you can get a measure of any strain present e.g. if the signal expected at L=0.9 was seen at L=0.92 then you can calculate the difference in lattice parameter using the equations above in reverse</p>
 </section>
 
 
@@ -66,7 +74,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">sxrd guides</a></h1>
+<h1 class="logo"><a href="index.html">sxrd guides</a></h1>
 
 
 
@@ -85,16 +93,16 @@
     </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="omegascans.html">Guide for processing inplane omega scans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fractionalhkl.html">HKL fractional positions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HKL fractional positions</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="omegascans.html" title="next chapter">Guide for processing inplane omega scans</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="omegascans.html" title="previous chapter">Guide for processing inplane omega scans</a></li>
   </ul></li>
 </ul>
 </div>
@@ -118,7 +126,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/fractionalhkl.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
