@@ -5,6 +5,9 @@ Here are some walkthroughs to aid in the analysis of surface x-ray diffraction m
 
 `Guide for analysing omega scan data`_ 
 
+`Calculating expected HKL positions from a known material`_
+
+`Setting up automated fitting routines for ROD`_
 
 Links to extra pdf resources
 ------------------------------
@@ -21,5 +24,8 @@ Links to extra pdf resources
 
    omegascans
    fractionalhkl
+   autofitting_rod
 
 .. _Guide for analysing omega scan data: ./omegascans.html
+.. _Calculating expected HKL positions from a known material: ./fractionalhkl.html
+.. _Setting up automated fitting routines for ROD: ./autofitting_rod.html
