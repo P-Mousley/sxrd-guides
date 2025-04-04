@@ -1,6 +1,7 @@
 Guide for processing inplane omega scans
 =========================================
 
+Analysis of omega scans consists of the following steps
 
 extract intensity profiles - using DAWN
 ---------------------------------------
