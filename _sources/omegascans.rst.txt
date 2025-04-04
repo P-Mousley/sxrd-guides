@@ -76,14 +76,14 @@ extract intensity profiles - using DAWN at Diamond
 
 .. collapse:: fit profiles using jupyter notebook
 
-    Download and open up the jupyter notebook omega_scan_fitting.ipynb 
+    Download and open up the jupyter notebook omega_scan_fitting.ipynb :download:`download notebook <omega_scan_fitting.ipynb>`
     
     .. toctree::
       :maxdepth: 1
 
       view omega_scan_fitting.ipynb <omega_scan_fitting>
     
-    :download:`test download <omega_scan_fitting.ipynb>`
+  
 
     
     fill in the correct path information and run the cells to fit the DAWN profiles. This should create a subfolder and fill it with a dataset and plots to show the fitting of each scan
