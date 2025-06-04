@@ -16,6 +16,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: |
+          pip install -U sphinx
 
       - name: Build HTML
         run: |
