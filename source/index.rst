@@ -1,0 +1,41 @@
+Guide to surface x-ray diffraction analysis
+==============================================
+
+Here are some walkthroughs to aid in the analysis of surface x-ray diffraction measurements
+
+`Guide for analysing omega scan data`_ 
+
+`Calculating expected HKL positions from a known material`_
+
+`Setting up automated fitting routines for ROD`_
+
+
+Links to website resources
+---------------------------
+
+ANArod project from ESRF - https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/ 
+
+
+
+
+Links to extra pdf resources
+------------------------------
+
+ - `ROD manual 2018 <_static/rodmanual_2018.pdf>`_
+
+ - `from beamtime to structure factors- E.Vlieg 2019 <_static/beamtime_to_SF_EVlieg.pdf>`_
+
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   omegascans
+   fractionalhkl
+   autofitting_rod
+   symmetry_averaging
+
+.. _Guide for analysing omega scan data: ./omegascans.html
+.. _Calculating expected HKL positions from a known material: ./fractionalhkl.html
+.. _Setting up automated fitting routines for ROD: ./autofitting_rod.html
