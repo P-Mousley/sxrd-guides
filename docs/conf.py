@@ -43,7 +43,6 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
-    "sphinx_subfigure",
     'nbsphinx',
     'jupyter_sphinx',
     'sphinx_collapse'
