@@ -257,9 +257,68 @@
           <section id="guide-to-surface-x-ray-diffraction-analysis">
 <h1>Guide to surface x-ray diffraction analysis<a class="headerlink" href="#guide-to-surface-x-ray-diffraction-analysis" title="Link to this heading">¶</a></h1>
 <p>Here are some walkthroughs to aid in the analysis of surface x-ray diffraction measurements</p>
-<p><a class="reference external" href="./omegascans.html">Guide for analysing omega scan data</a></p>
-<p><a class="reference external" href="./fractionalhkl.html">Calculating expected HKL positions from a known material</a></p>
-<p><a class="reference external" href="./autofitting_rod.html">Setting up automated fitting routines for ROD</a></p>
+<section id="reflectivity-low-angle-theta-2-theta-scans">
+<span id="reflectivity-section"></span><h2>Reflectivity ( low angle <span class="math notranslate nohighlight">\(\theta-2\theta scans\)</span>)<a class="headerlink" href="#reflectivity-low-angle-theta-2-theta-scans" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>These are specular measurements taken at low <span class="math notranslate nohighlight">\(\theta\)</span> values near the critical edge of your sample, and can be analysed with the following steps:</dt><dd><ul class="simple">
+<li><p>Reduce the data to a 1D reflecitivty profile, which can be done using the <a class="reference external" href="https://islatu.readthedocs.io">islatu package</a></p></li>
+<li><p>use a program such as GenX to model the reflectiity profile</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="specular-00l-rod-theta-2-theta-scans">
+<h2>Specular 00L rod ( <span class="math notranslate nohighlight">\(\theta-2\theta scans\)</span>)<a class="headerlink" href="#specular-00l-rod-theta-2-theta-scans" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>These are specular measurements taken at higher <span class="math notranslate nohighlight">\(\theta\)</span> values, away from the critical edge of your sample. These can be analysed using the following steps:</dt><dd><ul class="simple">
+<li><p>Reduce the data to a 1D profile,  which can be done using the <a class="reference external" href="https://islatu.readthedocs.io">islatu package</a></p></li>
+<li><p>Peak positions and widths can be used for quantitative analysis of your 00L profile</p></li>
+<li><p>Out-of-plane strain can be calculated by analysing <a class="reference external" href="./fractionalhkl.html">HKL positions</a></p></li>
+<li><p>The 00L profile can be loaded into fitting programs such as <a class="reference external" href="https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/">ROD</a> for full structure fitting. There are also options for <a class="reference external" href="./autofitting_rod.html">automating ROD</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a full structural fit, the specular 00L profile is usually combined with off-specular crystal truncation rod measurements.</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="crystal-truncation-rod-data">
+<span id="ctr-section"></span><h2>Crystal truncation rod data<a class="headerlink" href="#crystal-truncation-rod-data" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>These are measurements taken with a fixed incident angel, and along the L direction at a variety of HK positions, which can take both integer and fraction positiosn of H and K. These can be analysed using the following steps:</dt><dd><ul class="simple">
+<li><p>Map the data from raw images into HKL space, which can be done using the <a class="reference external" href="https://fast-rsm.readthedocs.io">fast_rsm package</a></p></li>
+<li><p>Reduce the 3D HKL volumes data into 1D profiles, which can be done using the binoviewer package (under development)</p></li>
+<li><p>The off-specular CTR profiles can be loaded into fitting programs such as <a class="reference external" href="https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/">ROD</a> for full structure fitting. There are also options for <a class="reference external" href="./autofitting_rod.html">automating ROD</a></p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="in-plane-omega-scans">
+<span id="omega-section"></span><h2>In-plane omega scans<a class="headerlink" href="#in-plane-omega-scans" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>These are measurements taken at fixed very low L value, and are collected by rocking the sample around it azimuthal axis. These can be analysed using the following steps:</dt><dd><ul class="simple">
+<li><p>Reduce the raw data to individual intensities for each HK position. See extra information on reducing <a class="reference external" href="./omegascans.html">omega scan data</a></p></li>
+<li><p>The 00L profile can be loaded into fitting programs such as <a class="reference external" href="https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/">ROD</a> for full structure fitting - Note: these are usually combined with off-specular crystal truncation rod measurements. There are also options for <a class="reference external" href="./autofitting_rod.html">automating ROD</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a full structural fit, the in-plane omega scans are usually combined with off-specular crystal truncation rod measurements</p>
+</div>
+</dd>
+</dl>
+</section>
+<section id="grazing-incidence-wide-angle-x-ray-scattering">
+<h2>Grazing incidence wide angle x-ray scattering<a class="headerlink" href="#grazing-incidence-wide-angle-x-ray-scattering" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>These are measurements taken with a large detector position close to the sample, and usually require some form of azimuthal integration. These can be processed in the following steps:</dt><dd><ul class="simple">
+<li><p>obtain calibration information so you know the detector distance from your sample</p></li>
+<li><p>azimuthally integrated the data or map the data into 2D co-ordinate system (Q_parallel Vs Q_Perpendicular, exit angles)</p></li>
+</ul>
+<p>both of these steps can be done using the pyFAI python package. For Diamond data sets the <a class="reference external" href="https://fast-rsm.readthedocs.io">fast_rsm package</a> already makes use of the pyFAI module.</p>
+</dd>
+</dl>
+</section>
 <section id="links-to-website-resources">
 <h2>Links to website resources<a class="headerlink" href="#links-to-website-resources" title="Link to this heading">¶</a></h2>
 <p>ANArod project from ESRF - <a class="reference external" href="https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/">https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/</a></p>
@@ -323,6 +382,11 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Guide to surface x-ray diffraction analysis</a><ul>
+<li><a class="reference internal" href="#reflectivity-low-angle-theta-2-theta-scans">Reflectivity ( low angle <span class="math notranslate nohighlight">\(\theta-2\theta scans\)</span>)</a></li>
+<li><a class="reference internal" href="#specular-00l-rod-theta-2-theta-scans">Specular 00L rod ( <span class="math notranslate nohighlight">\(\theta-2\theta scans\)</span>)</a></li>
+<li><a class="reference internal" href="#crystal-truncation-rod-data">Crystal truncation rod data</a></li>
+<li><a class="reference internal" href="#in-plane-omega-scans">In-plane omega scans</a></li>
+<li><a class="reference internal" href="#grazing-incidence-wide-angle-x-ray-scattering">Grazing incidence wide angle x-ray scattering</a></li>
 <li><a class="reference internal" href="#links-to-website-resources">Links to website resources</a></li>
 <li><a class="reference internal" href="#links-to-extra-pdf-resources">Links to extra pdf resources</a></li>
 </ul>
