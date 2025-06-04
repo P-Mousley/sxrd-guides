@@ -91,7 +91,7 @@ extract intensity profiles - using DAWN at Diamond
     .. image:: images/nb_fitting_output.png
         :width: 85%
 
-    here will be a csv file with your data set with the ‘h,k,l,I,dI’ to use with ROD
+    here will be a csv file with your data set with the 'h,k,l,I,dI' to use with ROD
 
     .. image:: images/csv_example.png
         :width: 85%

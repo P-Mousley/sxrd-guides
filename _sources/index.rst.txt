@@ -9,6 +9,15 @@ Here are some walkthroughs to aid in the analysis of surface x-ray diffraction m
 
 `Setting up automated fitting routines for ROD`_
 
+
+Links to website resources
+---------------------------
+
+ANArod project from ESRF - https://www.esrf.fr/computing/scientific/joint_projects/ANA-ROD/ 
+
+
+
+
 Links to extra pdf resources
 ------------------------------
 
@@ -25,6 +34,7 @@ Links to extra pdf resources
    omegascans
    fractionalhkl
    autofitting_rod
+   symmetry_averaging
 
 .. _Guide for analysing omega scan data: ./omegascans.html
 .. _Calculating expected HKL positions from a known material: ./fractionalhkl.html
