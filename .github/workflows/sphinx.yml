@@ -36,6 +36,8 @@ jobs:
           VALIDATE_PYTHON_BLACK: true	 
           VALIDATE_PYTHON_ISORT: true
           VALIDATE_PYTHON_RUFF: true
+  
+
   auto-fix:
     name: Auto-fix Python and Create _linted Branch
     runs-on: ubuntu-latest
@@ -48,6 +50,8 @@ jobs:
           # super-linter needs the full git history to get the
           # list of files that changed across commits
           fetch-depth: 0
+      - name: Load Super-Linter environment variables
+        run: grep -v '^#' .github/super-linter-fix.env >> "$GITHUB_ENV"
 
       - name: Super-linter
         uses: super-linter/super-linter@v7.4.0 # x-release-please-version
