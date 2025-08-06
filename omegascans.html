@@ -5,35 +5,35 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Jupyter notebook for fitting omega scan profiles" href="omega_scan_fitting.html" /><link rel="prev" title="Guide to surface x-ray diffraction analysis" href="index.html" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
         <title>Guide for processing inplane omega scans - sxrd guides documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=56c4699f" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -193,7 +193,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  
   <span class="sidebar-brand-text">sxrd guides  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -214,6 +213,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="symmetry_averaging.html">Symmetry averaging of data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reading_files.html">Reading and plotting HDF5 and nexus reading_file</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Reading and plotting HDF5 and nexus reading_file</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="hdf5_volume_slicer.html">view hdf5_volume_slicer.ipynb</a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -260,7 +263,7 @@
 <section id="extract-intensity-profiles-using-dawn-at-diamond">
 <h2>extract intensity profiles - using DAWN at Diamond<a class="headerlink" href="#extract-intensity-profiles-using-dawn-at-diamond" title="Link to this heading">¶</a></h2>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="2e8a12b2-16e1-49b7-bd77-ce6794081a5a" name="2e8a12b2-16e1-49b7-bd77-ce6794081a5a" type="checkbox"><label class="sphinx_collapse__label" for="2e8a12b2-16e1-49b7-bd77-ce6794081a5a"><i class="sphinx_collapse__icon"></i>starting DAWN</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="2c4dcc21-1cd3-4190-aea5-af281b8ab53b" name="2c4dcc21-1cd3-4190-aea5-af281b8ab53b" type="checkbox"><label class="sphinx_collapse__label" for="2c4dcc21-1cd3-4190-aea5-af281b8ab53b"><i class="sphinx_collapse__icon"></i>starting DAWN</label><div class="sphinx_collapse__content docutils container">
 <p>To open DAWN from a fresh terminal session enter</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>dawn
 dawn
@@ -275,7 +278,7 @@ dawn
 </div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="15a461ed-2b12-43c5-9725-6db1b7023372" name="15a461ed-2b12-43c5-9725-6db1b7023372" type="checkbox"><label class="sphinx_collapse__label" for="15a461ed-2b12-43c5-9725-6db1b7023372"><i class="sphinx_collapse__icon"></i>setup the analysis pipeline</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="012a983a-a91b-4d6e-bb77-ba114ae78ab0" name="012a983a-a91b-4d6e-bb77-ba114ae78ab0" type="checkbox"><label class="sphinx_collapse__label" for="012a983a-a91b-4d6e-bb77-ba114ae78ab0"><i class="sphinx_collapse__icon"></i>setup the analysis pipeline</label><div class="sphinx_collapse__content docutils container">
 <p>use the file browser panel on the right to navigate to your scan, and then double click to load it. This will open the dialog window show below – if the first image is being displayed it has read the data file correctly, and press finish.</p>
 <a class="reference internal image-reference" href="_images/dawn_read_data.png"><img alt="_images/dawn_read_data.png" src="_images/dawn_read_data.png" style="width: 85%;" />
 </a>
@@ -310,7 +313,7 @@ Add all scans from the same dataset, and ensure the box defined in Crop Data is 
 </div>
 </div>
 <div class="sphinx_collapse docutils container">
-<input class="sphinx_collapse__input" id="c91c587a-2894-4453-8bd3-19099f8161fb" name="c91c587a-2894-4453-8bd3-19099f8161fb" type="checkbox"><label class="sphinx_collapse__label" for="c91c587a-2894-4453-8bd3-19099f8161fb"><i class="sphinx_collapse__icon"></i>fit profiles using jupyter notebook</label><div class="sphinx_collapse__content docutils container">
+<input class="sphinx_collapse__input" id="b3e3e7c5-560f-4db1-bab0-303b35e44e31" name="b3e3e7c5-560f-4db1-bab0-303b35e44e31" type="checkbox"><label class="sphinx_collapse__label" for="b3e3e7c5-560f-4db1-bab0-303b35e44e31"><i class="sphinx_collapse__icon"></i>fit profiles using jupyter notebook</label><div class="sphinx_collapse__content docutils container">
 <p>Download and open up the jupyter notebook omega_scan_fitting.ipynb <a class="reference download internal" download="" href="_downloads/e795c016214c360d7cc5943591f942e1/omega_scan_fitting.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">notebook</span></code></a></p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -412,7 +415,7 @@ The last plot will show the cropped image for the maximum intensity peak positio
 </div><script src="_static/documentation_options.js?v=4b3d11ce"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>

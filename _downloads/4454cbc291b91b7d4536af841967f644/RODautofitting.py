@@ -79,7 +79,8 @@ def calcfitlist(run,n):
 
 
 
-def createmacroASA(mname,files,startvals,donefile):
+def createmacro(mname,files,startvals,donefile,fittype):
+    mactypes={'ASA':'fitlogloop5','RUN':'fitlogloop5run'}
     f=open(fr"{files['fitmac']}",'w')
     f.write(fr"re bul {files['bul']}"+'\n')
     f.write(fr"re dat  {files['dat']}"+'\n')
@@ -88,40 +89,18 @@ def createmacroASA(mname,files,startvals,donefile):
     outname=mname.replace('.sur','')
     f.write(fr"re fit {files['fit']}"+'\n')
     f.write(fr"re par {startvals}"+'\n')
-    f.write('mac fitlogloop5'+'\n')
+    f.write(f'mac {mactypes[fittype]}'+'\n')
     f.write(fr"li par {donefile} done")
     f.close()
     
-def createmacroRUN(mname,files,startvals,donefile):
-    f=open(fr"{files['fitmac']}",'w')
-    f.write(fr"re bul {files['bul']}"+'\n')
-    f.write(fr"re dat  {files['dat']}"+'\n')
-    f.write('mac sfsetup'+'\n')
-    f.write(fr"mac {files['loadmac']} return return"+'\n')
-    outname=mname.replace('.sur','')
-    f.write(fr"re fit {files['fit']}"+'\n')
-    f.write(fr"re par {startvals}"+'\n')
-    f.write('mac fitlogloop5run'+'\n')
-    f.write(fr"li par {donefile} done")
-    f.close()
 
-def ASAloop(modname,fitlist,files,fit5path,donefile,rodexe,asacount,run):
+def fitloop(modname,fitlist,files,fit5path,donefile,rodexe,count,run,fittype):
     while checkchidiff(fitlist)>0.01:
         startvals=fit5path
-        createmacroASA(modname,files,startvals,donefile)
+        createmacro(modname,files,startvals,donefile,fittype)
         domacrofits(donefile,rodexe)
-        asacount+=1
-        print(f'asa loop {asacount}')
+        count+=1
+        print(f'{fittype} loop {count}')
         fitlist,fitted,ranges,fitdf=calcfitlist(run,5)
-    return fitlist[4],asacount
-
-def runloop(modname,fitlist,files,fit5path,donefile,rodexe,runcount,run):
-    while checkchidiff(fitlist)>0.005:
-        startvals=fit5path
-        createmacroRUN(modname,files,startvals,donefile)
-        domacrofits(donefile,rodexe)
-        runcount+=1
-        print(f'run loop {runcount}')
-        fitlist,fitted,ranges,fitdf=calcfitlist(run,5)
-    return fitlist[4],runcount
+    return fitlist[4],count
     

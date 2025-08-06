@@ -3,48 +3,51 @@ Guide to surface x-ray diffraction analysis
 
 Here are some walkthroughs to aid in the analysis of surface x-ray diffraction measurements
 
+.. list-table::
+   :widths: 70 70 70
+   :header-rows: 0
 
-.. .. figure:: images/example_CTR.png
-..    :width: 40%
-..    :alt: Example of CTR dataset
-..    :align: left
+   * - **Crystal Truncation Rods**
+     - **Reflectivity**
+     - **In-plane omega scans**
+   * - 
+       .. image:: images/example_CTR.png
+          :width: 220px
+          :target: `ctr-section`_
+          :alt: Crystal Truncation Rods
+     - 
+       .. image:: images/example_reflectivity.png
+          :width: 220px
+          :target: `reflectivity-section`_
+          :alt: Reflectivity
+     - 
+       .. image:: images/example_inplane_omegas.png
+          :width: 220px
+          :target: `omega-section`_
+          :alt: In-plane omega scans
 
-..    Crystal Truncation Rods
+.. list-table::
+   :widths: 70 70 70
+   :header-rows: 0
 
-
-
-.. .. figure:: images/example_inplane_omegas.png
-..    :width: 40%
-..    :alt: Example inplane omega dataset
-..    :align: left
-
-..    In-plane omega scans
-
-
-
-.. .. raw:: html
-
-..    <div style="display: flex; gap: 16px; align-items: flex-start;">
-..      <div style="text-align: center;">
-..        <a href="#ctr-section">
-..          <img src="_images\example_CTR.png" alt="Crystal Truncation Rods" style="width: 230px;"><br>
-..          <span>Crystal Truncation Rods</span>
-..        </a>
-..      </div>
-..      <div style="text-align: center;">
-..        <a href="#reflectivity-section">
-..          <img src="_images\example_reflectivity.png" alt="Reflectivity" style="width: 230px;"><br>
-..          <span>Reflecitivty</span>
-..        </a>
-..      </div>
-..      <div style="text-align: center;">
-..        <a href="#omega-section">
-..          <img src="_images\example_inplane_omegas.png" alt="In-plane omega scans" style="width: 230px;"><br>
-..          <span>In-plane omega scans</span>
-..        </a>
-..      </div>
-..    </div>
-
+   * - **Specular 00L rods**
+     - **GIWAXS**
+     - **GISAXS**
+   * - 
+       .. image:: images/example_CTR.png
+          :width: 220px
+          :target: `ctr-section`_
+          :alt: Crystal Truncation Rods
+     - 
+       .. image:: images/example_reflectivity.png
+          :width: 220px
+          :target: `reflectivity-section`_
+          :alt: Reflectivity
+     - 
+       .. image:: images/example_inplane_omegas.png
+          :width: 220px
+          :target: `omega-section`_
+          :alt: In-plane omega scans
 
 .. _reflectivity-section:
 
@@ -127,6 +130,7 @@ Links to extra pdf resources
    fractionalhkl
    autofitting_rod
    symmetry_averaging
+   reading_files
 
 .. _Guide for analysing omega scan data: ./omegascans.html
 .. _Calculating expected HKL positions from a known material: ./fractionalhkl.html

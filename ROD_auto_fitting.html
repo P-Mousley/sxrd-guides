@@ -5,36 +5,36 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python script with autofitting functions" href="autofitting_functions.html" /><link rel="prev" title="Setting up automatic fitting using ROD" href="autofitting_rod.html" />
 
-    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.1.3 and Furo 2025.07.19 -->
         <title>running automatic fitting in ROD - sxrd guides documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx_collapse.css?v=226d88b4" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=56c4699f" />
     <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -194,7 +194,6 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  
   <span class="sidebar-brand-text">sxrd guides  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
@@ -215,6 +214,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="symmetry_averaging.html">Symmetry averaging of data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reading_files.html">Reading and plotting HDF5 and nexus reading_file</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Reading and plotting HDF5 and nexus reading_file</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="hdf5_volume_slicer.html">view hdf5_volume_slicer.ipynb</a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -300,92 +303,147 @@ mac modelout
 <section id="Define-all-file-paths">
 <h2>Define all file paths<a class="headerlink" href="#Define-all-file-paths" title="Link to this heading">¶</a></h2>
 <p>run cell below to load in the path information for where to find and/or save all the important files</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">RODautofitting</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">RODautofitting</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="c1">#give the path to where the final 5th fitting run is saved for each loop of 5</span>
-<span class="n">fit5path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;\path</span><span class="se">\t</span><span class="s2">o</span><span class="se">\f</span><span class="s2">itting</span><span class="se">\f</span><span class="s2">older</span><span class="se">\\</span><span class="s2">fitting_5.par&quot;</span>
-
-<span class="c1">#define the files to load into ROD using a dictionary</span>
+<span class="c1"># give the path to where the final 5th fitting run is saved for each loop of 5</span>
+<span class="n">fit5path</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to\fitting\folder\fitting_5.par&quot;</span>
+<span class="n">folderpath</span><span class="o">=</span><span class="s1">&#39;define path here&#39;</span>
+<span class="c1"># define the files to load into ROD using a dictionary</span>
 <span class="n">files</span><span class="o">=</span><span class="p">{}</span>
-<span class="n">files</span><span class="p">[</span><span class="s1">&#39;fit&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">fit</span>\<span class="n">file</span>
-<span class="n">files</span><span class="p">[</span><span class="s1">&#39;dat&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">dat</span>\<span class="n">file</span>
-<span class="n">files</span><span class="p">[</span><span class="s1">&#39;bul&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">bulk</span>\<span class="n">file</span>
-<span class="n">files</span><span class="p">[</span><span class="s1">&#39;loadmac&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">macro</span>\<span class="n">file</span>  <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="k">for</span> <span class="n">loading</span> <span class="n">matrices</span>
-<span class="n">files</span><span class="p">[</span><span class="s1">&#39;par&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">par</span>\<span class="n">file</span>  <span class="c1">#used as starting values</span>
-<span class="n">files</span><span class="p">[</span><span class="s1">&#39;fitmac&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">path</span>\<span class="n">to</span>\<span class="n">fittingmacro</span>\<span class="n">file</span>
+<span class="n">files</span><span class="p">[</span><span class="s1">&#39;fit&#39;</span><span class="p">]</span><span class="o">=</span> <span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\fit\file&quot;</span>
+<span class="n">files</span><span class="p">[</span><span class="s1">&#39;dat&#39;</span><span class="p">]</span><span class="o">=</span> <span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">path\to\dat\file&quot;</span>
+<span class="n">files</span><span class="p">[</span><span class="s1">&#39;bul&#39;</span><span class="p">]</span><span class="o">=</span> <span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\bulk\file&quot;</span>
+<span class="n">files</span><span class="p">[</span><span class="s1">&#39;loadmac&#39;</span><span class="p">]</span><span class="o">=</span> <span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\macro\file&quot;</span>  <span class="c1"># e.g. for loading matrices</span>
+<span class="n">files</span><span class="p">[</span><span class="s1">&#39;par&#39;</span><span class="p">]</span><span class="o">=</span> <span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\par\file&quot;</span>  <span class="c1">#used as starting values</span>
+<span class="n">files</span><span class="p">[</span><span class="s1">&#39;fitmac&#39;</span><span class="p">]</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\fittingmacro\file&quot;</span>
 
-<span class="c1">#create model name based on fitfile</span>
-<span class="n">modname</span><span class="o">=</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;fit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># create model name based on fitfile</span>
+<span class="n">modname</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="s1">&#39;fit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1">#set computer specific location for rod program and its init.mac file</span>
-<span class="n">rodexe</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">onedrivepath</span><span class="si">}</span><span class="s2">anarod_standard_1-7_mingw\rod.exe&quot;</span>
-<span class="n">initfile</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">onedrivepath</span><span class="si">}</span><span class="s2">\anarod_standard_1-7_mingw\rod_init.mac&quot;</span>
+<span class="c1"># set computer specific location for rod program and its init.mac file</span>
+<span class="n">rodexe</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to\anarod_standard_1-7_mingw\rod.exe&quot;</span>
+<span class="n">initfile</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to</span><span class="se">\\</span><span class="s2">anarod_standard_1-7_mingw\rod_init.mac&quot;</span>
 
 <span class="c1">#make a copy of initial rod_init.mac before any edits saved as rod_init_template.mac</span>
-<span class="n">templateinitfile</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">onedrivepath</span><span class="si">}</span><span class="s2">\anarod_standard_1-7_mingw\rod_init_template.mac&quot;</span>
+<span class="n">templateinitfile</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to\anarod_standard_1-7_mingw\rod_init_template.mac&quot;</span>
 
-<span class="c1">#set where to save dummy file used to flag when fitting loop is done</span>
-<span class="n">donefile</span><span class="o">=</span> <span class="n">path</span>\<span class="n">to</span>\<span class="n">done</span>\<span class="n">file</span>
+<span class="c1"># set where to save dummy file used to flag when fitting loop is done</span>
+<span class="n">donefile</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to\to\done\file&quot;</span>
 
-<span class="c1">#set path where fitting results are saved as defined in macro fitlogloop5.mac</span>
-<span class="n">fit5path</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to\fitting\folder\fitting_5.par&quot;</span>
+<span class="c1"># set path where fitting results are saved as defined in macro fitlogloop5.mac</span>
+<span class="n">fit5path</span><span class="o">=</span><span class="sa">fr</span><span class="s2">&quot;\path\to\path\to\fitting\folder\fitting_5.par&quot;</span>
 <br/></pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/runner/work/sxrd-guides/sxrd-guides/docs/RODautofitting.py:58: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+  dat=pd.read_csv(r&#39;{}&#39;.format(datfile),sep=&#39;\s+&#39;)
+/home/runner/work/sxrd-guides/sxrd-guides/docs/RODautofitting.py:58: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+  dat=pd.read_csv(r&#39;{}&#39;.format(datfile),sep=&#39;\s+&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[1]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">RODautofitting</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> *
+<span class="ansi-green-fg">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">os</span>
+<span class="ansi-green-fg">      4</span> <span style="color: rgb(95,135,135)"># give the path to where the final 5th fitting run is saved for each loop of 5</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/work/sxrd-guides/sxrd-guides/docs/RODautofitting.py:3</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">os</span>,<span class="ansi-blue-intense-fg ansi-bold">time</span>,<span class="ansi-blue-intense-fg ansi-bold">shutil</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">subprocess</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">numpy</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">np</span>
+<span class="ansi-green-fg">      4</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
+<span class="ansi-green-fg">      5</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">addinitmacline</span>(macline,templateinitfile,initfile):
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div></div>
 </div>
 </section>
 <section id="start-the-fitting-routine">
 <h2>start the fitting routine<a class="headerlink" href="#start-the-fitting-routine" title="Link to this heading">¶</a></h2>
 <p>Running the cell below starts the fitting cycles which does a series of ASA fits and then run fits until the chi squared values have stabilised</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create a ASA loop macro based on files dictionary</span>
-<span class="n">createmacroASA</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;par&#39;</span><span class="p">],</span><span class="n">donefile</span><span class="p">)</span>
+<span class="n">createmacro</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;par&#39;</span><span class="p">],</span><span class="n">donefile</span><span class="p">,</span><span class="s1">&#39;ASA&#39;</span><span class="p">)</span>
 
 <span class="c1">#do an initial ASA fitting round</span>
 <span class="n">domacrofits</span><span class="p">(</span><span class="n">donefile</span><span class="p">,</span><span class="n">rodexe</span><span class="p">)</span>
 
 <span class="c1">#define where the outputs are being save for each loop macro</span>
-<span class="n">run</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fit5path</span><span class="p">)</span><span class="o">+</span><span class="sa">r</span><span class="s2">&quot;\fitting&quot;</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fit5path</span><span class="p">)</span><span class="o">+</span><span class="sa">rf</span><span class="s2">&quot;\fitting&quot;</span>
 
 <span class="c1">#calculate chi-squared information for first fit</span>
-<span class="n">fitlist</span><span class="p">,</span><span class="n">fitted</span><span class="p">,</span><span class="n">ranges</span><span class="p">,</span><span class="n">fitdf</span><span class="o">=</span><span class="n">calcfitlist</span><span class="p">(</span><span class="n">run</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">asacount</span><span class="o">=</span><span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;asa loop </span><span class="si">{</span><span class="n">asacount</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">fitlist</span><span class="p">,</span> <span class="n">fitted</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">fitdf</span><span class="o">=</span><span class="n">calcfitlist</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">asacount</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;asa loop </span><span class="si">{</span><span class="n">asacount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1">#enter a loop that continues running rounds of 5 ASA fits until the final three chi squared values are within 0.01 of each other</span>
-<span class="n">endasachi</span><span class="p">,</span><span class="n">asacount</span><span class="o">=</span><span class="n">ASAloop</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span><span class="n">fitlist</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">fit5path</span><span class="p">,</span><span class="n">donefile</span><span class="p">,</span><span class="n">rodexe</span><span class="p">,</span><span class="n">asacount</span><span class="p">,</span><span class="n">run</span><span class="p">)</span>
+<span class="n">endasachi</span><span class="p">,</span><span class="n">asacount</span><span class="o">=</span><span class="n">fitloop</span><span class="p">(</span>
+    <span class="n">modname</span><span class="p">,</span> <span class="n">fitlist</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">fit5path</span><span class="p">,</span> <span class="n">donefile</span><span class="p">,</span> <span class="n">rodexe</span><span class="p">,</span> <span class="n">asacount</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span><span class="s1">&#39;ASA&#39;</span>
+    <span class="p">)</span>
 
-<span class="c1">#once the ASA fitting gave a stable answer copy the parameters to  a set location</span>
-<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fit5path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="sa">f</span><span class="s2">&quot;path</span><span class="se">\t</span><span class="s2">o\saving\location</span><span class="se">\\</span><span class="s2">asafit_</span><span class="si">{</span><span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.fit&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.par&quot;</span><span class="p">)</span>
+<span class="c1"># once the ASA fitting gave a stable answer copy the parameters to  a set location</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fit5path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\saving\location\asafit_</span><span class="si">{</span><span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.fit&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.par&quot;</span>
+    <span class="p">)</span>
 
-<span class="c1">#set starting parameters to the last of the ASA fits</span>
-<span class="n">startvals</span><span class="o">=</span><span class="n">fit5path</span>
+<span class="c1"># set starting parameters to the last of the ASA fits</span>
+<span class="n">startvals</span> <span class="o">=</span> <span class="n">fit5path</span>
 
-<span class="c1">#create a run loop macro</span>
-<span class="n">createmacroRUN</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">startvals</span><span class="p">,</span><span class="n">donefile</span><span class="p">)</span>
+<span class="c1"># create a run loop macro</span>
+<span class="n">createmacro</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">startvals</span><span class="p">,</span> <span class="n">donefile</span><span class="p">,</span><span class="s1">&#39;RUN&#39;</span><span class="p">)</span>
 
-<span class="c1">#do an initial run fitting round</span>
-<span class="n">domacrofits</span><span class="p">(</span><span class="n">donefile</span><span class="p">,</span><span class="n">rodexe</span><span class="p">)</span>
+<span class="c1"># do an initial run fitting round</span>
+<span class="n">domacrofits</span><span class="p">(</span><span class="n">donefile</span><span class="p">,</span> <span class="n">rodexe</span><span class="p">)</span>
 
 <span class="c1">#calculate chi-squared information for first fit</span>
-<span class="n">fitlist</span><span class="p">,</span><span class="n">fitted</span><span class="p">,</span><span class="n">ranges</span><span class="p">,</span><span class="n">fitdf</span><span class="o">=</span><span class="n">calcfitlist</span><span class="p">(</span><span class="n">run</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">runcount</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">fitlist</span><span class="p">,</span> <span class="n">fitted</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">fitdf</span> <span class="o">=</span> <span class="n">calcfitlist</span><span class="p">(</span><span class="n">run</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">runcount</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;run loop </span><span class="si">{</span><span class="n">runcount</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="c1">#enter a loop that continues running rounds of 5 run fits until the final three chi squared values are within 0.005 of each other</span>
-<span class="n">endrunchi</span><span class="p">,</span><span class="n">runcount</span><span class="o">=</span><span class="n">runloop</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span><span class="n">fitlist</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">fit5path</span><span class="p">,</span><span class="n">donefile</span><span class="p">,</span><span class="n">rodexe</span><span class="p">,</span><span class="n">runcount</span><span class="p">,</span><span class="n">run</span><span class="p">)</span>
+<span class="n">endrunchi</span><span class="p">,</span><span class="n">runcount</span><span class="o">=</span><span class="n">fitloop</span><span class="p">(</span>
+    <span class="n">modname</span><span class="p">,</span><span class="n">fitlist</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">fit5path</span><span class="p">,</span><span class="n">donefile</span><span class="p">,</span><span class="n">rodexe</span><span class="p">,</span><span class="n">runcount</span><span class="p">,</span><span class="n">run</span><span class="p">,</span><span class="s1">&#39;RUN&#39;</span>
+    <span class="p">)</span>
 
 <span class="c1">#once the run fitting gave a stable answer copy the parameters to  a set location</span>
-<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fit5path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="sa">f</span><span class="s2">&quot;path</span><span class="se">\t</span><span class="s2">o\saving\location</span><span class="se">\\</span><span class="s2">runfit_</span><span class="si">{</span><span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.fit&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.par&quot;</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fit5path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="sa">fr</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folderpath</span><span class="si">}</span><span class="s2">\path\to\saving\location\runfit_</span><span class="si">{</span><span class="n">modname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.fit&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.par&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)">#create a ASA loop macro based on files dictionary</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">createmacro</span>(modname,files,files[<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">par</span><span class="ansi-yellow-fg">&#39;</span>],donefile,<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">ASA</span><span class="ansi-yellow-fg">&#39;</span>)
+<span class="ansi-green-fg">      4</span> <span style="color: rgb(95,135,135)">#do an initial ASA fitting round</span>
+<span class="ansi-green-fg">      5</span> domacrofits(donefile,rodexe)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;createmacro&#39; is not defined
+</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -470,7 +528,7 @@ mac modelout
 </div><script src="_static/documentation_options.js?v=4b3d11ce"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
