@@ -297,13 +297,13 @@
 <td><p><strong>GIWAXS</strong></p></td>
 <td><p><strong>GISAXS</strong></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal image-reference" href="#ctr-section"><img alt="Crystal Truncation Rods" src="_images/example_CTR.png" style="width: 220px;" />
+<tr class="row-even"><td><a class="reference internal image-reference" href="#specular-section"><img alt="Specular 00L rods" src="_images/placeholder.png" style="width: 220px;" />
 </a>
 </td>
-<td><a class="reference internal image-reference" href="#reflectivity-section"><img alt="Reflectivity" src="_images/example_reflectivity.png" style="width: 220px;" />
+<td><a class="reference internal image-reference" href="#giwaxs-section"><img alt="GIWAXS" src="_images/placeholder.png" style="width: 220px;" />
 </a>
 </td>
-<td><a class="reference internal image-reference" href="#omega-section"><img alt="In-plane omega scans" src="_images/example_inplane_omegas.png" style="width: 220px;" />
+<td><a class="reference internal image-reference" href="#gisaxs-section"><img alt="GISAXS" src="_images/placeholder.png" style="width: 220px;" />
 </a>
 </td>
 </tr>
@@ -321,7 +321,7 @@
 </dl>
 </section>
 <section id="specular-00l-rod-theta-2-theta-scans">
-<h2>Specular 00L rod ( <span class="math notranslate nohighlight">\(\theta-2\theta scans\)</span>)<a class="headerlink" href="#specular-00l-rod-theta-2-theta-scans" title="Link to this heading">¶</a></h2>
+<span id="specular-section"></span><h2>Specular 00L rod ( <span class="math notranslate nohighlight">\(\theta-2\theta scans\)</span>)<a class="headerlink" href="#specular-00l-rod-theta-2-theta-scans" title="Link to this heading">¶</a></h2>
 <dl>
 <dt>These are specular measurements taken at higher <span class="math notranslate nohighlight">\(\theta\)</span> values, away from the critical edge of your sample. These can be analysed using the following steps:</dt><dd><ul class="simple">
 <li><p>Reduce the data to a 1D profile,  which can be done using the <a class="reference external" href="https://islatu.readthedocs.io">islatu package</a></p></li>
@@ -362,7 +362,7 @@
 </dl>
 </section>
 <section id="grazing-incidence-wide-angle-x-ray-scattering">
-<h2>Grazing incidence wide angle x-ray scattering<a class="headerlink" href="#grazing-incidence-wide-angle-x-ray-scattering" title="Link to this heading">¶</a></h2>
+<span id="giwaxs-section"></span><h2>Grazing incidence wide angle x-ray scattering<a class="headerlink" href="#grazing-incidence-wide-angle-x-ray-scattering" title="Link to this heading">¶</a></h2>
 <dl>
 <dt>These are measurements taken with a large detector position close to the sample, and usually require some form of azimuthal integration. These can be processed in the following steps:</dt><dd><ul class="simple">
 <li><p>obtain calibration information so you know the detector distance from your sample</p></li>
@@ -371,6 +371,9 @@
 <p>both of these steps can be done using the pyFAI python package. For Diamond data sets the <a class="reference external" href="https://fast-rsm.readthedocs.io">fast_rsm package</a> already makes use of the pyFAI module.</p>
 </dd>
 </dl>
+</section>
+<section id="grazing-incidence-small-angle-x-ray-scattering">
+<span id="gisaxs-section"></span><h2>Grazing incidence small angle x-ray scattering<a class="headerlink" href="#grazing-incidence-small-angle-x-ray-scattering" title="Link to this heading">¶</a></h2>
 </section>
 <section id="links-to-website-resources">
 <h2>Links to website resources<a class="headerlink" href="#links-to-website-resources" title="Link to this heading">¶</a></h2>
@@ -440,6 +443,7 @@
 <li><a class="reference internal" href="#crystal-truncation-rod-data">Crystal truncation rod data</a></li>
 <li><a class="reference internal" href="#in-plane-omega-scans">In-plane omega scans</a></li>
 <li><a class="reference internal" href="#grazing-incidence-wide-angle-x-ray-scattering">Grazing incidence wide angle x-ray scattering</a></li>
+<li><a class="reference internal" href="#grazing-incidence-small-angle-x-ray-scattering">Grazing incidence small angle x-ray scattering</a></li>
 <li><a class="reference internal" href="#links-to-website-resources">Links to website resources</a></li>
 <li><a class="reference internal" href="#links-to-extra-pdf-resources">Links to extra pdf resources</a></li>
 </ul>

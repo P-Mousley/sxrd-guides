@@ -34,20 +34,20 @@ Here are some walkthroughs to aid in the analysis of surface x-ray diffraction m
      - **GIWAXS**
      - **GISAXS**
    * - 
-       .. image:: images/example_CTR.png
+       .. image:: images/placeholder.png
           :width: 220px
-          :target: `ctr-section`_
-          :alt: Crystal Truncation Rods
+          :target: `specular-section`_
+          :alt: Specular 00L rods
      - 
-       .. image:: images/example_reflectivity.png
+       .. image:: images/placeholder.png
           :width: 220px
-          :target: `reflectivity-section`_
-          :alt: Reflectivity
+          :target: `giwaxs-section`_
+          :alt: GIWAXS
      - 
-       .. image:: images/example_inplane_omegas.png
+       .. image:: images/placeholder.png
           :width: 220px
-          :target: `omega-section`_
-          :alt: In-plane omega scans
+          :target: `gisaxs-section`_
+          :alt: GISAXS
 
 .. _reflectivity-section:
 
@@ -58,6 +58,7 @@ These are specular measurements taken at low :math:`\theta` values near the crit
  - Reduce the data to a 1D reflecitivty profile, which can be done using the `islatu package`_
  - use a program such as GenX to model the reflectiity profile 
 
+.. _specular-section:
 
 Specular 00L rod ( :math:`\theta-2\theta scans`)
 -------------------------------------------------
@@ -95,6 +96,8 @@ These are measurements taken at fixed very low L value, and are collected by roc
    
    For a full structural fit, the in-plane omega scans are usually combined with off-specular crystal truncation rod measurements
 
+.. _giwaxs-section:
+
 Grazing incidence wide angle x-ray scattering
 ----------------------------------------------
 
@@ -103,6 +106,12 @@ These are measurements taken with a large detector position close to the sample,
  - azimuthally integrated the data or map the data into 2D co-ordinate system (Q_parallel Vs Q_Perpendicular, exit angles)
 
  both of these steps can be done using the pyFAI python package. For Diamond data sets the `fast_rsm package`_ already makes use of the pyFAI module. 
+
+
+.. _gisaxs-section:
+Grazing incidence small angle x-ray scattering
+-----------------------------------------------
+
 
 
 Links to website resources
