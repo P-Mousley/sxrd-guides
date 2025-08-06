@@ -7,67 +7,67 @@ on:
 permissions: read-all
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
+  # lint:
+  #   name: Lint
+  #   runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: read
-      # To report GitHub Actions status checks
-      statuses: write
+  #   permissions:
+  #     contents: read
+  #     packages: read
+  #     # To report GitHub Actions status checks
+  #     statuses: write
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # super-linter needs the full git history to get the
-          # list of files that changed across commits
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         # super-linter needs the full git history to get the
+  #         # list of files that changed across commits
+  #         fetch-depth: 0
 
-      - name: Super-linter
-        uses: super-linter/super-linter@v7.4.0 # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_JUPYTER_NBQA_BLACK: true	 
-          VALIDATE_JUPYTER_NBQA_ISORT: true
-          VALIDATE_JUPYTER_NBQA_RUFF: true	 
-          VALIDATE_PYTHON_BLACK: true	 
-          VALIDATE_PYTHON_ISORT: true
-          VALIDATE_PYTHON_RUFF: true
+  #     - name: Super-linter
+  #       uses: super-linter/super-linter@v7.4.0 # x-release-please-version
+  #       env:
+  #         # To report GitHub Actions status checks
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         VALIDATE_JUPYTER_NBQA_BLACK: true	 
+  #         VALIDATE_JUPYTER_NBQA_ISORT: true
+  #         VALIDATE_JUPYTER_NBQA_RUFF: true	 
+  #         VALIDATE_PYTHON_BLACK: true	 
+  #         VALIDATE_PYTHON_ISORT: true
+  #         VALIDATE_PYTHON_RUFF: true
   
 
-  auto-fix:
-    name: Auto-fix Python and Create _linted Branch
-    runs-on: ubuntu-latest
-    needs: lint
-    if: always() && needs.lint.result == 'failure'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          # super-linter needs the full git history to get the
-          # list of files that changed across commits
-          fetch-depth: 0
-      - name: Load Super-Linter environment variables
-        run: grep -v '^#' .github/super-linter-fix.env >> "$GITHUB_ENV"
+  # auto-fix:
+  #   name: Auto-fix Python and Create _linted Branch
+  #   runs-on: ubuntu-latest
+  #   needs: lint
+  #   if: always() && needs.lint.result == 'failure'
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         # super-linter needs the full git history to get the
+  #         # list of files that changed across commits
+  #         fetch-depth: 0
+  #     - name: Load Super-Linter environment variables
+  #       run: grep -v '^#' .github/super-linter-fix.env >> "$GITHUB_ENV"
 
-      - name: Super-linter
-        uses: super-linter/super-linter@v7.4.0 # x-release-please-version
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Super-linter
+  #       uses: super-linter/super-linter@v7.4.0 # x-release-please-version
+  #       env:
+  #         # To report GitHub Actions status checks
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Create and push _linted branch
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          BRANCH="${GITHUB_REF##*/}_autolinted"
-          git checkout -b "$BRANCH"
-          git add .
-          git commit -m "chore: auto-fix linting issues"
-          git push origin "$BRANCH" 
+  #     - name: Create and push _linted branch
+  #       run: |
+  #         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+  #         git config --global user.name "github-actions[bot]"
+  #         BRANCH="${GITHUB_REF##*/}_autolinted"
+  #         git checkout -b "$BRANCH"
+  #         git add .
+  #         git commit -m "chore: auto-fix linting issues"
+  #         git push origin "$BRANCH" 
               
   build-deploy:
     runs-on: ubuntu-latest
